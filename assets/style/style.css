@@ -1,1 +1,27 @@
 /* BASIC STYLES HERE */
+
+body {
+    /* min-height: 100vh; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background: no-repeat center center fixed; */
+    /* height: 100%; */
+
+}
+
+.centercard {
+    position: absolute;
+    top: 38%;
+    left: 38%;
+}
+
+.cardright {
+    position: absolute;
+    left: 83%;
+}
+
+.todo {
+    position: absolute;
+    top: 69%;
+    left: 74%;
+}
