@@ -1,13 +1,14 @@
 import { ProxyState } from "../AppState.js"
 import { getToDoForm } from "../Components/ToDoForm.js"
+import { sandboxApi } from "../Services/AxiosService.js"
 import { toDosService } from "../Services/ToDosService.js"
+import { Pop } from "../Utils/Pop.js"
 
 
 
 function _drawToDos() {
     let template = ''
-    let toDos = ProxyState.toDos
-    toDos.forEach(t => template += t.Template)
+    ProxyState.todos.forEach(t => template += t.Template)
     document.getElementById('tasks').innerHTML = template
     document.getElementById('newtask').innerHTML = getToDoForm()
 }
@@ -15,13 +16,9 @@ function _drawToDos() {
 
 export class ToDosController {
     constructor() {
-        ProxyState.on('todo', _drawToDos)
-
-    }
-
-    viewToDos() {
-        _drawToDos()
+        ProxyState.on('todos', _drawToDos)
         this.getToDos()
+
     }
 
     async createToDo() {
@@ -32,7 +29,7 @@ export class ToDosController {
                 description: form.description.value,
             }
             await toDosService.createToDo(newToDo)
-            //    form.reset
+            form.reset()
         } catch (error) {
             console.error('[Create ToDo]', error)
 
@@ -46,4 +43,26 @@ export class ToDosController {
             console.error('[Getting ToDos]')
         }
     }
+
+    async deleteToDo(id) {
+        try {
+            debugger
+            const yes = await Pop.confirm('Delete ToDo')
+            if (!yes) { return }
+            await toDosService.deleteToDo(id)
+        } catch (error) {
+            console.error('[Delete ToDo]', error)
+            Pop.error(error)
+        }
+    }
+
+    async toggleToDo(toDoId) {
+        try {
+            await toDosService.toggleToDo(toDoId)
+        } catch (error) {
+            console.error('[Toggle ToDo]', error)
+            Pop.error(error)
+        }
+    }
+
 }

@@ -25,3 +25,21 @@ body {
     top: 69%;
     left: 74%;
 }
+
+/* .over:hover+.show {
+    display: block;
+} */
+
+/* .show {
+    display: none;
+    color: aqua;
+} */
+
+p {
+    display: none;
+    color: white;
+}
+
+h5:hover+p {
+    display: block;
+}

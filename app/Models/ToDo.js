@@ -9,9 +9,11 @@ export class ToDo {
     get Template() {
         return `
         <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" ${this.completed ? 'checked' : ''} onchange="app.toDosController.toggleToDo('${this.id}')" value="" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
-        <div id="tasks">${this.description}</div>
+        <div id="tasks">${this.description} <button onclick="app.toDosController.deleteToDo('${this.id}')">delete</button> 
+        </div>
+        </div>
         
         `
     }

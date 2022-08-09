@@ -7,12 +7,17 @@ export class Quote {
     get QuoteTemplate() {
         return `
         <h5 class="text-center text-light pb-5">${this.content}</h5>
-        <h6 class="text-center text-light>${this.author}</h6>
-        
-        
-        
-        
+        <p class="text-center ">${this.author}</p>
+       
+        `
+    }
+    get AuthorTemplate() {
+        return `
         
         `
     }
+
+
+
+
 }

@@ -4,24 +4,11 @@ import { sandboxApi } from "./AxiosService.js"
 
 
 class QuotesService {
-    async setQuote() {
+
+    async getQuote() {
         let res = await sandboxApi.get('/quotes')
         ProxyState.quote = new Quote(res.data)
-
     }
-
-
-    async getQuotes() {
-        let res = await sandboxApi.get('/quotes')
-        ProxyState.quotes = res.data.map(q => new Quote(q))
-    }
-
-
-
-
-
-
-    // ProxyState.quote = res.data.map(q => new Quote(q))
 
 }
 

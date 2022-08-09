@@ -5,23 +5,15 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Value').Value[]} */
   values = []
 
-  /** @type {import('./Models/Quote').Quote[]} */
-  quotes = []
-
-  /** @type {import('./Models/Quote').Quote[]} */
-  quotes = {}
+  /** @type {import('./Models/Quote').Quote} */
+  // @ts-ignore
+  quote = {}
 
   /** @type {import('./Models/ToDo').ToDo[]} */
-  todo = []
-
+  todos = []
 
   // background = null
   imgUrl = ''
-
-  theQuote = ''
-
-  toDos = ''
-
 
 }
 

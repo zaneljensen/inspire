@@ -7,7 +7,9 @@ import { quotesService } from "../Services/QuotesService..js";
 
 
 function _drawQuote() {
-    document.getElementById('quote').innerText = ProxyState.getQuote.QuoteTemplate
+    // @ts-ignore
+    document.getElementById('quote').innerHTML = ProxyState.quote.QuoteTemplate
+    document.getElementById('show').innerHTML = ProxyState.quote.AuthorTemplate
 
 }
 
@@ -15,7 +17,8 @@ function _drawQuote() {
 
 export class QuotesController {
     constructor() {
-        ProxyState.on('quotes', _drawQuote)
+        ProxyState.on('quote', _drawQuote)
+        ProxyState.on('show', _drawQuote)
         this.getQuote()
 
     }
